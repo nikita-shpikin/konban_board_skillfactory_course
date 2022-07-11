@@ -1,0 +1,9 @@
+.main {
+  background: #0079BF;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 89vh;
+}
