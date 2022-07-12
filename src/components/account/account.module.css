@@ -1,10 +1,10 @@
-.main {
+.account {
   background: #0079BF;
 }
 
 .container {
   padding: 20px;
+  height: 89vh;
   max-width: 1200px;
   margin: 0 auto;
-  height: 89vh;
 }

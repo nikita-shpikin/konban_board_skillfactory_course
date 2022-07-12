@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import style from './header.module.css';
 import avatar from './avatar.svg';
 import arrow from './arrow.svg';
+import Footer from '../footer/Footer';
 
 const Header = () => {
-  const [state, setState] = useState(true);
+  const [state, setState] = useState(false);
 
   return (
     <header className={style.header}>
@@ -19,13 +21,16 @@ const Header = () => {
           >
             <img src={arrow} alt="стрелка" className={state ? style.arrow : ' '} />
             <div className={state ? style.menu : style.noMenu}>
-              <a>My account</a>
-              <a>My tasks</a>
-              <a>Log Out</a>
+              <Link to=''>My account</Link>
+              <Link to='tasks'>My tasks</Link>
+              <Link to=''>Log Out</Link>
             </div>
           </button>
         </div>
       </div>
+      <Outlet />
+
+      <Footer />
     </header>
   );
 }

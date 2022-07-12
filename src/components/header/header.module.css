@@ -74,6 +74,7 @@
   cursor: pointer;
   z-index: 1;
   text-align: left;
+  text-decoration: none;
 }
 
 .menu>a:hover {
