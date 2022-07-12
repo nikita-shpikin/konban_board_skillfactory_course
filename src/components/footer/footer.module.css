@@ -24,3 +24,9 @@
   line-height: 21px;
   color: #FFFFFF;
 }
+
+@media screen and (max-width: 600px) {
+  .footer {
+    display: none;
+  }
+}
