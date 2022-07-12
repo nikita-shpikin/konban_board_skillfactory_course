@@ -6,7 +6,7 @@ import arrow from './arrow.svg';
 import Footer from '../footer/Footer';
 
 const Header = () => {
-  const [state, setState] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   return (
     <header className={style.header}>
@@ -17,13 +17,15 @@ const Header = () => {
 
           <button
             className={style.button}
-            onClick={() => setState(!state)}
+            onClick={() => setVisible(!visible)}
           >
-            <img src={arrow} alt="стрелка" className={state ? style.arrow : ' '} />
-            <div className={state ? style.menu : style.noMenu}>
+            <img src={arrow} alt="стрелка" className={visible ? style.arrow : ' '} />
+            <div className={visible ? style.menu : style.noMenu}>
+
               <Link to=''>My account</Link>
               <Link to='tasks'>My tasks</Link>
               <Link to=''>Log Out</Link>
+
             </div>
           </button>
         </div>

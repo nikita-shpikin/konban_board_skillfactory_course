@@ -1,11 +1,13 @@
 import React from 'react';
-import style from './main.module.css'
+import Board from '../board/Board';
+import style from './main.module.css';
 
-const Main = () => {
+const Main = ({ state, setState }) => {
+
   return (
     <main className={style.main}>
       <div className={style.container}>
-        <h1>tasks</h1>
+        <Board state={state} />
       </div>
     </main>
   );

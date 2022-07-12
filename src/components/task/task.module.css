@@ -1,0 +1,10 @@
+.link {
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 21px;
+  color: #000000;
+  background: #FFF;
+  border-radius: 5px;
+  padding: 7px;
+  margin-top: 22px;
+}
