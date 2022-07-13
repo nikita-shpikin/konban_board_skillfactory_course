@@ -15,7 +15,7 @@ const Board = ({ state }) => {
 
           )}
 
-          <Button>add card</Button>
+          <Button alt='+ add card' title={item.title}>add card</Button>
         </div>
       )}
     </>
