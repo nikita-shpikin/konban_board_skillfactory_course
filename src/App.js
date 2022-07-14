@@ -7,10 +7,10 @@ import './App.css';
 
 function App() {
   const [state, setState] = useState([
-    { title: 'Backlog', tasks: ['Login page – performance issues', 'Sprint bugfix', 'Sprint bugfix', 'Sprint bugfix', 'Sprint bugfix'] },
-    { title: 'Ready', tasks: ['Shop page – performance issues'] },
-    { title: 'In Progress', tasks: ['User page – performance issues'] },
-    { title: 'Finished', tasks: ['Main page – performance issues'] },
+    { title: 'Backlog', tasks: [] },
+    { title: 'Ready', tasks: [] },
+    { title: 'In Progress', tasks: [] },
+    { title: 'Finished', tasks: [] },
   ]);
 
   return (

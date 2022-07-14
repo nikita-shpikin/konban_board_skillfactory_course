@@ -15,7 +15,10 @@ const Board = ({ state }) => {
 
           )}
 
-          <Button alt='+ add card' title={item.title}>add card</Button>
+          <Button alt='+ add card' title={item.title} tasks={item.tasks}
+          state={state}
+          >
+            add card</Button>
         </div>
       )}
     </>

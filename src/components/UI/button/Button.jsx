@@ -4,7 +4,7 @@ import style from './button.module.css';
 import Input from '../input/Input';
 import Dropdown from '../dropdown/Dropdown';
 
-const Button = ({ children, ...props }) => {
+const Button = ({ children, tasks, title, state, ...props }) => {
   const [btnCondition, setBtnCondition] = useState(false);
 
   const getTitle = title => {
@@ -14,21 +14,63 @@ const Button = ({ children, ...props }) => {
     return false;
   }
 
+  function disableButton(tasks, title) {
+    if (title === 'Backlog') {
+      return true;
+    }
+
+    if (title === 'Ready') {
+
+      let x = state.find(item => item.title === 'Backlog').tasks.length;
+      if (x) {
+        return true;
+      }
+      return false;
+
+    }
+    if (title === 'In Progress') {
+      let x = state.find(item => item.title === 'Ready').tasks.length;
+      if (x) {
+        return true;
+      }
+      return false;
+
+    }
+    if (title === 'Finished') {
+      let x = state.find(item => item.title === 'In Progress').tasks.length;
+      if (x) {
+        return true;
+      }
+      return false;
+
+    }
+
+  }
+
   return (
     <>
       {btnCondition
         ? <>
-          {getTitle(props.title) ?
+          {getTitle(title, tasks) ?
             <Input />
             :
             <Dropdown />
           }
         </>
-        : 
-        <button className={style.button} onClick={() => setBtnCondition(true)}>
-          <img src={add} alt={props.alt} />
-          {children}
-        </button>
+        :
+        <>{disableButton(tasks, title)
+          ?
+          <button className={style.button} onClick={() => setBtnCondition(true)}>
+            <img src={add} alt={props.alt} />
+            {children}
+          </button>
+          :
+          <button className={style.button} style={{ opacity: 0.7 }}>
+            <img src={add} alt={props.alt} />
+            {children}
+          </button>
+        }
+        </>
       }
     </>
   );
