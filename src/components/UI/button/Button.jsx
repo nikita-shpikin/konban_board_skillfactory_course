@@ -14,37 +14,17 @@ const Button = ({ children, tasks, title, state, ...props }) => {
     return false;
   }
 
-  function disableButton(tasks, title) {
-    if (title === 'Backlog') {
-      return true;
-    }
-
-    if (title === 'Ready') {
-
-      let x = state.find(item => item.title === 'Backlog').tasks.length;
-      if (x) {
+  const disableButton = title => {
+    switch (title) {
+      case 'Backlog':
         return true;
-      }
-      return false;
-
+      case 'Ready':
+        return state.find(item => item.title === 'Backlog').tasks.length ? true : false;
+      case 'In Progress':
+        return state.find(item => item.title === 'Ready').tasks.length ? true : false;
+      case 'Finished':
+        return state.find(item => item.title === 'In Progress').tasks.length ? true : false;
     }
-    if (title === 'In Progress') {
-      let x = state.find(item => item.title === 'Ready').tasks.length;
-      if (x) {
-        return true;
-      }
-      return false;
-
-    }
-    if (title === 'Finished') {
-      let x = state.find(item => item.title === 'In Progress').tasks.length;
-      if (x) {
-        return true;
-      }
-      return false;
-
-    }
-
   }
 
   return (
@@ -58,7 +38,7 @@ const Button = ({ children, tasks, title, state, ...props }) => {
           }
         </>
         :
-        <>{disableButton(tasks, title)
+        <>{disableButton(title)
           ?
           <button className={style.button} onClick={() => setBtnCondition(true)}>
             <img src={add} alt={props.alt} />

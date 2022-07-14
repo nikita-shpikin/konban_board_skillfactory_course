@@ -7,10 +7,20 @@ import './App.css';
 
 function App() {
   const [state, setState] = useState([
-    { title: 'Backlog', tasks: [] },
-    { title: 'Ready', tasks: [] },
-    { title: 'In Progress', tasks: [] },
-    { title: 'Finished', tasks: [] },
+    {
+      title: 'Backlog', tasks: [{
+        task: 'xB', description: 'x', id: 1,
+      }],
+    },
+    {
+      title: 'Ready', tasks: [],
+    },
+    {
+      title: 'In Progress', tasks: [],
+    },
+    {
+      title: 'Finished', tasks: [],
+    }
   ]);
 
   return (

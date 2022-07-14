@@ -8,3 +8,8 @@
   padding: 7px;
   margin-top: 22px;
 }
+
+.link:hover {
+  background-color: #0079BF;
+  opacity: 0.8;
+}

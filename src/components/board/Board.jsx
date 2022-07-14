@@ -9,16 +9,15 @@ const Board = ({ state }) => {
       {state.map(item =>
         <div key={item.title} className={style.board}>
           <h2>{item.title}</h2>
-          {item.tasks.map((task, index) =>
-
-            <Task key={task + index}>{task}</Task>
-
+          {item.tasks.map(item =>
+            <Task key={item.id}>{item.task}</Task>
           )}
-
-          <Button alt='+ add card' title={item.title} tasks={item.tasks}
-          state={state}
-          >
-            add card</Button>
+          <Button
+            alt='+ add card'
+            title={item.title}
+            tasks={item.tasks}
+            state={state}
+          > add card </Button>
         </div>
       )}
     </>
