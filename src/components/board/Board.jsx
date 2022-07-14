@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../UI/button/Button';
+import Add from '../add/Add';
 import Task from '../task/Task';
 import style from './board.module.css';
 
@@ -12,12 +12,12 @@ const Board = ({ state }) => {
           {item.tasks.map(item =>
             <Task key={item.id}>{item.task}</Task>
           )}
-          <Button
+          <Add
             alt='+ add card'
             title={item.title}
             tasks={item.tasks}
             state={state}
-          > add card </Button>
+          > add card </Add>
         </div>
       )}
     </>
