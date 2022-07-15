@@ -22,13 +22,13 @@ function App() {
   ]);
 
   useEffect(() => {
-    const tasks = localStorage.getItem('state')
-    setState(JSON.parse(tasks))
-  })
+    const tasks = localStorage.getItem('state') || [];
+    setState(JSON.parse(tasks));
+  }, [])
 
   useEffect(() => {
     window.localStorage.setItem('state', JSON.stringify(state))
-  }, [state])
+  }, [state]);
 
   return (
     <BrowserRouter>
