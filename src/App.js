@@ -8,7 +8,15 @@ import './App.css';
 function App() {
   const [state, setState] = useState([
     {
-      title: 'Backlog', tasks: [],
+      title: 'Backlog',
+      tasks: [
+        {
+          id: 1,
+          task: 'tutorial',
+          description: 'инструкция',
+          date: Date.now(),
+        }
+      ],
     },
     {
       title: 'Ready', tasks: [],
@@ -22,8 +30,9 @@ function App() {
   ]);
 
   useEffect(() => {
+
     const tasks = localStorage.getItem('state') || [];
-    setState(JSON.parse(tasks));
+    setState(JSON.parse(tasks))
   }, [])
 
   useEffect(() => {
