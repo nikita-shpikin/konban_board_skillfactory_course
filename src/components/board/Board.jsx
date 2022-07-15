@@ -3,7 +3,7 @@ import Add from '../add/Add';
 import Task from '../task/Task';
 import style from './board.module.css';
 
-const Board = ({ state }) => {
+const Board = ({ state, ...props }) => {
   return (
     <>
       {state.map(item =>
@@ -17,6 +17,7 @@ const Board = ({ state }) => {
             title={item.title}
             tasks={item.tasks}
             state={state}
+            setState={props.setState}
           > add card </Add>
         </div>
       )}

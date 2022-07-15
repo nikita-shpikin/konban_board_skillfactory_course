@@ -7,7 +7,7 @@ const Main = ({ state, setState }) => {
   return (
     <main className={style.main}>
       <div className={style.container}>
-        <Board state={state} />
+        <Board state={state} setState={setState} />
       </div>
     </main>
   );

@@ -34,7 +34,7 @@ const Add = ({ children, tasks, title, state, ...props }) => {
     <>
       {btnCondition
         ? <>{getTitle(title, tasks) ?
-          <Input />
+          <Input state={state} setState={props.setState} setBtnCondition={setBtnCondition} />
           :
           <Dropdown x={[1, 'Nikita']} />
         }</>
