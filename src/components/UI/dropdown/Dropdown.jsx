@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './dropDown.module.css';
 
-const Dropdown = ({ state, setState, title }) => {
+const Dropdown = ({ state, setState, title, setBtnCondition }) => {
   let selectTasks;
   if (title === 'Ready') {
     selectTasks = state.find(num => num.title === 'Backlog')
@@ -11,20 +11,36 @@ const Dropdown = ({ state, setState, title }) => {
     selectTasks = state.find(num => num.title === 'In Progress')
   }
 
-  const movingTasks = () => {
-
+  const movingTasks = e => {
+    const newTasks = state.map(board => {
+      let taskId = +e.target.value;
+      let newTask = selectTasks.tasks.find(obj => obj.id === taskId)
+      //удаление из предыдущего task
+      if (board.title === selectTasks.title) {
+        return { ...board, tasks: selectTasks.tasks.filter(task => task.id !== taskId) }
+      }
+      //добавление в новый task
+      if (board.title === title) {
+        return { ...board, tasks: [...board.tasks, newTask] }
+      }
+      return board;
+    })
+    setState(newTasks);
+    setBtnCondition(false);
   }
 
   return (
     <select
+      name='select'
       className={style.select}
-    // onChange={movingTasks}
+      onChange={movingTasks}
     >
+      <option value='19'>choose texts</option>
       {selectTasks.tasks.map(item => {
         return (
           <option
             className={style.option}
-            value={item.task}
+            value={item.id}
             key={item.id}
           >
             {item.task}

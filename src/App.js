@@ -31,7 +31,7 @@ function App() {
 
   useEffect(() => {
 
-    const tasks = localStorage.getItem('state') || [];
+    const tasks = localStorage.getItem('state');
     setState(JSON.parse(tasks))
   }, [])
 

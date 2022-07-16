@@ -8,9 +8,11 @@ const Board = ({ state, ...props }) => {
     <>
       {state.map(item =>
         <div key={item.title} className={style.board}>
-          <h2>{item.title}</h2>
+          <h2> {item.title} </h2>
           {item.tasks.map(item =>
-            <Task key={item.id}>{item.task}</Task>
+            <Task key={item.id}>
+              {item.task}
+            </Task>
           )}
           <Add
             alt='+ add card'
