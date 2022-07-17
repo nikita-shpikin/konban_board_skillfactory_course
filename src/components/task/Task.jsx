@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import style from './task.module.css'
 
-const Task = ({ children, ...propss }) => {
+const Task = ({ children, id }) => {
+
   return (
-    <a href='*' className={style.link}>
+    <Link to={`task${id}`} className={style.link}>
       {children}
-    </a>
+    </Link >
   );
 }
 

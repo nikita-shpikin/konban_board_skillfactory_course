@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Account from './components/account/Account';
+import InsideTask from './components/insideTask/InsideTask';
 import './App.css';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
           task: 'tutorial',
           description: 'инструкция',
           date: Date.now(),
-        }
+        },
       ],
     },
     {
@@ -30,7 +31,6 @@ function App() {
   ]);
 
   useEffect(() => {
-
     const tasks = localStorage.getItem('state');
     setState(JSON.parse(tasks))
   }, [])
@@ -44,7 +44,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Header />}>
           <Route index element={<Account />} />
-          <Route path='/tasks' element={<Main state={state} setState={setState} />} />
+          <Route path='tasks' element={<Main state={state} setState={setState} />} />
+          <Route path='tasks/task:id' element={<InsideTask state={state} />} />
         </Route>
       </Routes>
     </BrowserRouter>

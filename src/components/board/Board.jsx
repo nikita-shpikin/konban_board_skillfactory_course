@@ -10,7 +10,7 @@ const Board = ({ state, ...props }) => {
         <div key={item.title} className={style.board}>
           <h2> {item.title} </h2>
           {item.tasks.map(item =>
-            <Task key={item.id}>
+            <Task key={item.id} id={item.id}>
               {item.task}
             </Task>
           )}
