@@ -13,18 +13,16 @@ const InsideTask = ({ state }) => {
   let findTask;
   const getTask = (obj) => {
     obj.tasks.find(item => {
-      if (item.id == +id) {
+      if (item.id === +id) {
         findTask = item;
       }
+      return false;
     })
   }
 
   for (let obj of state) {
-    console.log(obj)
     getTask(obj)
   }
-  //useMemo
-  console.log(findTask)
 
   return (
     <div className={style.task}>
@@ -33,6 +31,7 @@ const InsideTask = ({ state }) => {
         <h2 className={style.title}>
           {findTask.task}
         </h2>
+        <span className={style.date}>{findTask.date}</span>
 
         <div className={style.text}>
           {findTask.description}

@@ -14,7 +14,7 @@ const Input = ({ state, setState, setBtnCondition }) => {
             id: Date.now(),
             task: task,
             description: description,
-            date: Date.now(),
+            date: new Date().toDateString().slice(3),
           })
         }
         return num;
@@ -23,6 +23,7 @@ const Input = ({ state, setState, setBtnCondition }) => {
       setBtnCondition(false)
     }
   }
+
 
   return (
     <>

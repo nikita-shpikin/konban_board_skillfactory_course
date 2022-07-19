@@ -15,7 +15,7 @@ function App() {
           id: 1,
           task: 'tutorial',
           description: 'инструкция',
-          date: Date.now(),
+          date: 'Tue Okt 19 1992',
         },
       ],
     },
