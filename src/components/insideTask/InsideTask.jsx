@@ -7,35 +7,53 @@ import back from './x.svg';
 const InsideTask = ({ state, setState }) => {
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
-
   const { id } = useParams();
+  let findTask = {};
 
-  let findTask;
-  const getTask = (obj) => {
+  state.forEach(obj => {
     obj.tasks.find(item => {
       if (item.id === +id) {
         findTask = item;
       }
       return false;
     })
-  }
+  })
 
-  for (let obj of state) {
-    getTask(obj)
+  const getEditingTask = (e) => {
+
+    let newTasks = state.map(element => {
+      if (element.tasks.length > 0) {
+
+        return {
+          ...element, tasks: element.tasks.map(item => {
+            if (item.task === findTask.task) {
+              return { ...item, description: e.target.value }
+            }
+            return item;
+          })
+        }
+      }
+
+      return element;
+    });
+
+    setState(newTasks);
   }
 
   return (
     <div className={style.task}>
       <div className={style.wrapper}>
 
-        <h2 className={style.title}>
-          {findTask.task}
-        </h2>
+        <input className={style.title} defaultValue={findTask.task} />
+
         <span className={style.date}>{findTask.date}</span>
 
-        <div className={style.text}>
-          {findTask.description}
-        </div>
+        <textarea
+          className={style.text}
+          defaultValue={findTask.description}
+          placeholder='description'
+          onChange={getEditingTask}
+        />
 
         <Button onClick={goBack} className={style.back}>
           <img src={back} alt="back" />
