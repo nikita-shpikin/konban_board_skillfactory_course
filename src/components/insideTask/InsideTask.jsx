@@ -4,7 +4,7 @@ import style from './insideTask.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import back from './x.svg';
 
-const InsideTask = ({ state }) => {
+const InsideTask = ({ state, setState }) => {
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 

@@ -10,14 +10,7 @@ function App() {
   const [state, setState] = useState([
     {
       title: 'Backlog',
-      tasks: [
-        {
-          id: 1,
-          task: 'tutorial',
-          description: 'инструкция',
-          date: 'Tue Okt 19 1992',
-        },
-      ],
+      tasks: [],
     },
     {
       title: 'Ready', tasks: [],
@@ -45,7 +38,7 @@ function App() {
         <Route path='/' element={<Header />}>
           <Route index element={<Account />} />
           <Route path='tasks' element={<Main state={state} setState={setState} />} />
-          <Route path='tasks/task:id' element={<InsideTask state={state} />} />
+          <Route path='tasks/task:id' element={<InsideTask state={state} setState={setState} />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -9,11 +9,14 @@ const Board = ({ state, ...props }) => {
       {state.map(item =>
         <div key={item.title} className={style.board}>
           <h2> {item.title} </h2>
-          {item.tasks.map(item =>
-            <Task key={item.id} id={item.id}>
-              {item.task}
-            </Task>
-          )}
+          {item.tasks.length
+            ? item.tasks.map(item =>
+              <Task key={item.id} id={item.id}>
+                {item.task}
+              </Task>
+            )
+            : <div className={style.missing}>no tasks</div>
+          }
           <Add
             alt='+ add card'
             title={item.title}
