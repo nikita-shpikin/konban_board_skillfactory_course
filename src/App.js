@@ -7,6 +7,8 @@ import InsideTask from './components/insideTask/InsideTask';
 import Login from './components/login/Login';
 import NoPage from './components/NoPage/NoPage';
 import './App.css';
+import { AuthContext } from "./context";
+import Loader from "./components/UI/loader/Loader";
 
 function App() {
   const [state, setState] = useState([
@@ -34,23 +36,39 @@ function App() {
     window.localStorage.setItem('state', JSON.stringify(state))
   }, [state]);
 
-  const isAuth = true;
+  const [isAuth, setIsAuth] = useState(false);
+  const [isLoading, setLoading] = useState(true);
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      setIsAuth(true);
+    }
+    setLoading(false);
+  }, [])
+
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
+    <AuthContext.Provider value={{
+      isAuth,
+      setIsAuth,
+    }}>
+      <BrowserRouter>
+        <Routes>
+          {isAuth
+            ? <Route path='/' element={<Header />}>
+              <Route index element={<Account />} />
+              <Route path='tasks' element={<Main state={state} setState={setState} />} />
+              <Route path='tasks/task:id' element={<InsideTask state={state} setState={setState} />} />
 
-    <BrowserRouter>
-      <Routes>
-        {isAuth
-          ? <Route path='/' element={<Header />}>
-            <Route index element={<Account />} />
-            <Route path='tasks' element={<Main state={state} setState={setState} />} />
-            <Route path='tasks/task:id' element={<InsideTask state={state} setState={setState} />} />
-
-            <Route path='*' element={<NoPage />} />
-          </Route>
-          : <Route path="login" element={<Login />} />
-        }
-      </Routes>
-    </BrowserRouter>
+              <Route path='*' element={<NoPage />} />
+            </Route>
+            : <Route path="/" element={<Login />} />
+          }
+        </Routes>
+      </BrowserRouter>
+    </AuthContext.Provider>
   );
 }
 

@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import style from './header.module.css';
 import avatar from './avatar.svg';
 import arrow from './arrow.svg';
 import Footer from '../footer/Footer';
+import { AuthContext } from '../../context';
+
 
 const Header = () => {
   const [visible, setVisible] = useState(false);
+  const { setIsAuth } = useContext(AuthContext);
+
+  const logout = () => {
+    setIsAuth(false);
+    localStorage.removeItem('auth');
+  }
 
   return (
     <header className={style.header}>
@@ -24,16 +32,16 @@ const Header = () => {
 
               <Link to=''>My account</Link>
               <Link to='tasks'>My tasks</Link>
-              <Link to=''>Log Out</Link>
+              <Link to='/' onClick={logout}>Log Out</Link>
 
             </div>
           </button>
         </div>
-      </div>
+      </div >
       <Outlet />
 
       <Footer />
-    </header>
+    </header >
   );
 }
 

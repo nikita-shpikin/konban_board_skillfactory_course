@@ -9,8 +9,9 @@
 .form {
   background: #EBECF0;
   border-radius: 10px;
-  width: 282px;
-  height: 202px;
+  padding: 20px;
+  width: 280px;
+  height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
