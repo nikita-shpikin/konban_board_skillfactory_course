@@ -35,7 +35,7 @@ const Dropdown = ({ state, setState, title, setBtnCondition }) => {
       className={style.select}
       onChange={movingTasks}
     >
-      <option value='19'>choose texts</option>
+      <option value='19'>choose tasks</option>
       {selectTasks.tasks.map(item => {
         return (
           <option

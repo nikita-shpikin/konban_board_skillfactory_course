@@ -4,6 +4,8 @@ import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Account from './components/account/Account';
 import InsideTask from './components/insideTask/InsideTask';
+import Login from './components/login/Login';
+import NoPage from './components/NoPage/NoPage';
 import './App.css';
 
 function App() {
@@ -32,14 +34,21 @@ function App() {
     window.localStorage.setItem('state', JSON.stringify(state))
   }, [state]);
 
+  const isAuth = true;
   return (
+
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Header />}>
-          <Route index element={<Account />} />
-          <Route path='tasks' element={<Main state={state} setState={setState} />} />
-          <Route path='tasks/task:id' element={<InsideTask state={state} setState={setState} />} />
-        </Route>
+        {isAuth
+          ? <Route path='/' element={<Header />}>
+            <Route index element={<Account />} />
+            <Route path='tasks' element={<Main state={state} setState={setState} />} />
+            <Route path='tasks/task:id' element={<InsideTask state={state} setState={setState} />} />
+
+            <Route path='*' element={<NoPage />} />
+          </Route>
+          : <Route path="login" element={<Login />} />
+        }
       </Routes>
     </BrowserRouter>
   );
