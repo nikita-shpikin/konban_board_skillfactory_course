@@ -19,11 +19,26 @@ const InsideTask = ({ state, setState }) => {
     })
   })
 
-  const getEditingTask = (e) => {
-
+  const getEditingTitle = (e) => {
     let newTasks = state.map(element => {
       if (element.tasks.length > 0) {
+        return {
+          ...element, tasks: element.tasks.map(item => {
+            if (item.task === findTask.task) {
+              return { ...item, task: e.target.value }
+            }
+            return item;
+          })
+        }
+      }
+      return element;
+    });
+    setState(newTasks);
+  }
 
+  const getEditingDescription = (e) => {
+    let newTasks = state.map(element => {
+      if (element.tasks.length > 0) {
         return {
           ...element, tasks: element.tasks.map(item => {
             if (item.task === findTask.task) {
@@ -33,32 +48,29 @@ const InsideTask = ({ state, setState }) => {
           })
         }
       }
-
       return element;
     });
-
     setState(newTasks);
   }
 
   return (
     <div className={style.task}>
       <div className={style.wrapper}>
-
-        <input className={style.title} defaultValue={findTask.task} />
-
+        <input
+          onInput={getEditingTitle}
+          className={style.title}
+          defaultValue={findTask.task}
+        />
         <span className={style.date}>{findTask.date}</span>
-
         <textarea
           className={style.text}
           defaultValue={findTask.description}
           placeholder='description'
-          onChange={getEditingTask}
+          onChange={getEditingDescription}
         />
-
         <Button onClick={goBack} className={style.back}>
           <img src={back} alt="back" />
         </Button>
-
       </div>
     </div>
   );
