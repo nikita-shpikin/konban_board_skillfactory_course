@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Account from './components/account/Account';
@@ -54,7 +54,7 @@ function App() {
       isAuth,
       setIsAuth,
     }}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           {isAuth
             ? <Route path='/' element={<Header />}>
@@ -67,7 +67,7 @@ function App() {
             : <Route path="/" element={<Login />} />
           }
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </AuthContext.Provider>
   );
 }
