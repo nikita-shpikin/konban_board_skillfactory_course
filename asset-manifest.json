@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/konban_board_skillfactory_course/static/css/main.0c3bf8cd.css",
-    "main.js": "/konban_board_skillfactory_course/static/js/main.f575ead2.js",
+    "main.js": "/konban_board_skillfactory_course/static/js/main.dfe7b759.js",
     "static/media/avatar.svg": "/konban_board_skillfactory_course/static/media/avatar.b0967b48f06a62f80f1e1a865a4c471f.svg",
     "index.html": "/konban_board_skillfactory_course/index.html",
     "static/media/x.svg": "/konban_board_skillfactory_course/static/media/x.2001e956d267bc9b1a2349ee0a8ee521.svg",
     "static/media/add.svg": "/konban_board_skillfactory_course/static/media/add.87015637c2ec387005512d52f68faadb.svg",
     "static/media/arrow.svg": "/konban_board_skillfactory_course/static/media/arrow.7482446225beb2c2f73aa9596a727217.svg",
     "main.0c3bf8cd.css.map": "/konban_board_skillfactory_course/static/css/main.0c3bf8cd.css.map",
-    "main.f575ead2.js.map": "/konban_board_skillfactory_course/static/js/main.f575ead2.js.map"
+    "main.dfe7b759.js.map": "/konban_board_skillfactory_course/static/js/main.dfe7b759.js.map"
   },
   "entrypoints": [
     "static/css/main.0c3bf8cd.css",
-    "static/js/main.f575ead2.js"
+    "static/js/main.dfe7b759.js"
   ]
 }
