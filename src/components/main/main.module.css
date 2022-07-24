@@ -17,4 +17,9 @@
   .main {
     height: 93vh;
   }
+
+  .container {
+    justify-content: center;
+  }
+
 }
