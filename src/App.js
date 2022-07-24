@@ -13,8 +13,7 @@ import Loader from "./components/UI/loader/Loader";
 function App() {
   const [state, setState] = useState([
     {
-      title: 'Backlog',
-      tasks: [],
+      title: 'Backlog', tasks: [],
     },
     {
       title: 'Ready', tasks: [],
@@ -29,11 +28,15 @@ function App() {
 
   useEffect(() => {
     const tasks = localStorage.getItem('state');
-    setState(JSON.parse(tasks))
+    if (!tasks) {
+      return;
+    } else {
+      setState(JSON.parse(tasks));
+    }
   }, [])
 
   useEffect(() => {
-    window.localStorage.setItem('state', JSON.stringify(state))
+    window.localStorage.setItem('state', JSON.stringify(state));
   }, [state]);
 
   const [isAuth, setIsAuth] = useState(false);
