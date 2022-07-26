@@ -60,7 +60,7 @@ function App() {
       <HashRouter>
         <Routes>
           {isAuth
-            ? <Route path='/' element={<Header />}>
+            ? <Route path='/' element={<Header state={state} />}>
               <Route index element={<Account />} />
               <Route path='tasks' element={<Main state={state} setState={setState} />} />
               <Route path='tasks/task:id' element={<InsideTask state={state} setState={setState} />} />

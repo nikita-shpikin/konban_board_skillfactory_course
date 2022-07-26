@@ -7,7 +7,7 @@ import Footer from '../footer/Footer';
 import { AuthContext } from '../../context';
 
 
-const Header = () => {
+const Header = ({ state }) => {
   const [visible, setVisible] = useState(false);
   const { setIsAuth } = useContext(AuthContext);
 
@@ -40,7 +40,7 @@ const Header = () => {
       </div >
       <Outlet />
 
-      <Footer />
+      <Footer state={state} />
     </header >
   );
 }
