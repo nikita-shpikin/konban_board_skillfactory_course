@@ -6,8 +6,7 @@ import arrow from './arrow.svg';
 import Footer from '../footer/Footer';
 import { AuthContext } from '../../context';
 
-
-const Header = ({ state }) => {
+const Header = ({ state, isLoading }) => {
   const [visible, setVisible] = useState(false);
   const { setIsAuth } = useContext(AuthContext);
 

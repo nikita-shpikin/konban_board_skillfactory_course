@@ -8,7 +8,6 @@ import Login from './components/login/Login';
 import NoPage from './components/NoPage/NoPage';
 import './App.css';
 import { AuthContext } from "./context";
-import Loader from "./components/UI/loader/Loader";
 
 function App() {
   const [state, setState] = useState([
@@ -40,17 +39,12 @@ function App() {
   }, [state]);
 
   const [isAuth, setIsAuth] = useState(false);
-  const [isLoading, setLoading] = useState(true);
+
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setIsAuth(true);
     }
-    setLoading(false);
   }, [])
-
-  if (isLoading) {
-    return <Loader />
-  }
 
   return (
     <AuthContext.Provider value={{

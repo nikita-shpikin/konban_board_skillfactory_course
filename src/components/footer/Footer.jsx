@@ -12,7 +12,6 @@ const Footer = ({ state }) => {
     }
   })
 
-
   return (
     <footer className={style.footer}>
       <div className={style.container}>
